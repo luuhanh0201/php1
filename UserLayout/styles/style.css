@@ -1,0 +1,125 @@
+.main {
+  width: 100%;
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+}
+/* Detail */
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header__detail {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+.header__detail-content {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  padding: 2px 0;
+}
+
+/* Header width search */
+.header__width-search{
+  display: flex;
+  width: 1240px;
+  margin: 0 auto;
+}
+.inner__header__width-search {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+.header__width-search-logo{
+  width: 163px;
+  height: 44px;
+}
+.header__width-search-logo > img{
+  width: 100%;
+  height: 100%;
+}
+.header__width-search-input{
+  position: relative;
+  width: 500px;
+}
+.header__width-search-input input{
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 100%;
+  padding: 0 18px;
+  font-size: 1.6rem;
+  border-radius: 50px;
+
+}
+.header__width-search-input button{
+  position: absolute;
+  right: 0;
+  font-size: 2.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50px;
+  height: 100%;
+  padding: 0 18px;
+}
+.header__width-search-icons{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+}
+.control-icon{
+  cursor: pointer;
+  color: var(--primary-color);
+
+}
+
+/* Menu */
+
+.menu{
+  width: 1240px;
+  margin: 0 auto;
+  padding-top: 32px;
+}
+.list-menu{
+  justify-content: space-between;
+  display: flex;
+    position: relative;
+}
+.menu-item{
+  /* position: relative; */
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.line{
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  padding: 0 4px;
+  height: 6px;
+  border-radius: 15px;
+  background-color: #c23564;
+  transition: all 0.2s ease;
+  /* width: 100px; */
+  
+}
+.menu-item.active {
+  opacity: 1;
+}
+
+.tab-contents {
+  padding: 28px 0;
+}
+.tab-content {
+  color: #333;
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
