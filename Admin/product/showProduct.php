@@ -55,14 +55,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td style="text-align: center;"><?= $product['id'] ?></td>
                 <td style="text-align: center;"><?= $product['name'] ?></td>
                 <td style="text-align: center;">
-                    <img width="100px" height="100px" src='../assets/images/<?= $product['image'] ?>' />
+                    <img width="100px" height="100px" src="../assets/images/<?= $product['image'] ?>" />
                 </td>
                 <td style="text-align: center;"><?= $product['quantify'] ?></td>
                 <td style="text-align: center;"><?= $product['sold'] ?></td>
                 <td style="text-align: center;"><?= $product['price'] ?></td>
                 <td style="text-align: center;"><?= $product['description'] ?></td>
                 <td style="text-align: center;width:100px">
-                    <a style="width:100px; margin-bottom:6px" class="btn btn-success" href="updateProduct.php?id=<?= $product['id'] ?>">UPDATE</a>
+                    <a style="width:100px; margin-bottom:6px" class="btn btn-success" href="update.php?id=<?= $product['id'] ?>">UPDATE</a>
                     <a style="width:100px" class="btn btn-warning" href="delete.php?id=<?= $product['id'] ?>">DELETE</a>
                 </td>
             </tr>

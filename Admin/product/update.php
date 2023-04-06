@@ -1,11 +1,12 @@
 <?php
-include '../../connection.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+include_once '../../connection.php';
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $id = $_POST['id'];
     $name = $_POST['name'];
-    // $image = $_POST['image'];
+    $image = $_POST['image'];
     $quantify = $_POST['quantify'];
-    $sold = $_POST['sold'];
     $price = $_POST['price'];
+    $sold = $_POST['sold'];
     $description = $_POST['description'];
 
     $file = $_FILES['image'];
@@ -30,13 +31,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $msg = "Vui lòng chọn ảnh";
     }
 
-    $sql = "INSERT INTO products (name,image,quantify,sold,price,description) values('$name','$file_name','$quantify','$sold','$price','$description')";
-
-    $conn->exec($sql);
-    echo "Thêm dữ liệu thành công <br/>";
+    try {
+        $sql = "UPDATE products SET name='$name',image='$image', quantify='$quantify', price='$price', sold = '$sold', description='$description' where id=$id";
+        $conn->exec($sql);
+        $mess = 'Update success';
+        header("location: ./showProduct.php?mess=$mess");
+    } catch (PDOException $e) {
+        echo "Lỗi: " . $e->getMessage();
+    }
 }
 
+$id = $_GET['id'];
+// Edit 
+$sql = "SELECT * FROM products where id=$id";
+$stmt = $conn->prepare($sql);
+// Thực thi
+$stmt->execute();
+$product = $stmt->fetch(PDO::FETCH_ASSOC);
+// var_dump($product);
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,44 +71,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header class="header">
         <img src="../assets/images/LOGO4 1.png" alt="" />
         <div>
-
             <button style="background-color: transparent; border: none; margin-right: 24px;" type='submit'><a class="btn btn-danger" href="../logout.php">LOG OUT</a></button>
         </div>
     </header>
 
 
-    <form style="width: 500px; margin: 24px auto;" class="form" action="add.php" method="post" enctype="multipart/form-data">
+    <form style="width: 500px; margin: 24px auto;" class="form" action="update.php?id=<?= $_GET['id'] ?>" method="post">
+        <div>
+            <h1 style="text-align: center;">UPDATE PRODUCT</h1>
+            <input type="hidden" name="id" value="<?= $product['id'] ?>">
+        </div>
+
         <div>
             <label class="col-sm-2 col-form-label">ID: </label>
-            <input class="form-control" type='text' name="id" value="AUTO" disabled />
+            <input class="form-control" type='text' value="<?= $product['id'] ?>" disabled />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Name: </label>
-            <input class="form-control" type='text' name="name" />
+            <input class="form-control" type='text' name="name" value="<?= $product['name'] ?>" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Image: </label>
-            <input class="form-control" type='file' name="image" />
+            <img width="100px" height="100px" src="../assets/images/<?=$product['image']?>" />
+            <input class="form-control" type='file' name="image" value="<?= $file_name ?>" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Quantify: </label>
-            <input class="form-control" type='text' name="quantify" />
-        </div>
-        <div>
-            <label class="col-sm-2 col-form-label">Sold: </label>
-            <input class="form-control" type='text' name="sold" />
+            <input class="form-control" type='text' name="quantify" value="<?= $product['quantify'] ?>" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Price: </label>
-            <input class="form-control" type='text' name="price" />
+            <input class="form-control" type='text' name="price" value="<?= $product['price'] ?>" />
+        </div>
+        <div>
+            <label class="col-sm-2 col-form-label">Sold: </label>
+            <input class="form-control" type='text' name="sold" value="<?= $product['sold'] ?>" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Description: </label>
-            <input class="form-control" type='text' name="description" />
+            <input class="form-control" type='text' name="description" value="<?= $product['description'] ?>" />
         </div>
-        <div><button class="btn btn-success" type='submit'>Add</button></div>
-        <div><button class="btn btn-primary" type='submit'><a class="btn btn-primary" href="../product/showProduct.php">List product</a></button></div>
-
+        <div><button class="btn btn-success" type='submit'>UPDATE</button></div>
+        <div><button class="btn btn-primary"><a class="btn btn-primary" href="./showProduct.php">List Product</a></button></div>
     </form>
     <style>
         .header {

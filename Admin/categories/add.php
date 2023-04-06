@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO category (name) values('$name')";
 
     $conn->exec($sql);
-    echo "Thêm dữ liệu thành công <br/>";
+    echo "<script type='text/javascript'>alert('Thêm dữ liệu thành công');</script>";
 }
 
 ?>

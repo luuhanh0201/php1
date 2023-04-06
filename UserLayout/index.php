@@ -52,27 +52,27 @@
 
     <!-- Container -->
     <ul class="tab-contents">
-      <li class="tab-content active ">
+      <li class="tab-content  ">
         <?php
         include './home.php'
         ?>
       </li>
       <li class="tab-content">
-      <?php
+        <?php
         include './about.php'
         ?>
       </li>
-      <li class="tab-content">
-      <?php
+      <li class="tab-content active">
+        <?php
         include './shop.php'
         ?>
       </li>
       <li class="tab-content">
-      <?php
+        <?php
         include './informational.php'
         ?>
       </li>
-</ul>
+    </ul>
 
 </body>
 <script src="./js/script.js"></script>
