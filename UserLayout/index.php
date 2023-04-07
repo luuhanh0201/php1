@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.min.css" />
   <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.min.css" />
 </head>
 
 <body>
@@ -41,9 +41,9 @@
       </div>
       <nav class="menu">
         <ul class="list-menu">
-          <li class="menu-item active"><a href="#" class="menu-link">HOME</a></li>
+          <li class="menu-item"><a href="#" class="menu-link">HOME</a></li>
           <li class="menu-item"><a href="#" class="menu-link">ABOUT</a></li>
-          <li class="menu-item"><a href="#" class="menu-link">SHOP</a></li>
+          <li class="menu-item active"><a href="#" class="menu-link">SHOP</a></li>
           <li class="menu-item"><a href="#" class="menu-link">INFORMATIONAL</a></li>
           <div class="line"></div>
         </ul>
@@ -73,6 +73,9 @@
         ?>
       </li>
     </ul>
+    <footer class="footer">
+      Lưu Đình Hạnh
+    </footer>
 
 </body>
 <script src="./js/script.js"></script>

@@ -1,9 +1,10 @@
 <?php
 include_once '../../connection.php';
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_POST['id'];
+    $image = $_POST['image_'];
     $name = $_POST['name'];
-    $image = $_POST['image'];
     $quantify = $_POST['quantify'];
     $price = $_POST['price'];
     $sold = $_POST['sold'];
@@ -12,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $file = $_FILES['image'];
     $file_name = $file['name'];
 
+    var_dump($image);
     if ($file['size'] > 0) {
         if ($file['size'] < 100000000) {
             $img = ['jpg', 'jpeg', 'png', 'gif'];
@@ -27,15 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             $msg = "File phải nhỏ hơn 1mb";
         }
-    } else {
-        $msg = "Vui lòng chọn ảnh";
+    }else{
+        $file_name = $image;
     }
+    
 
     try {
-        $sql = "UPDATE products SET name='$name',image='$image', quantify='$quantify', price='$price', sold = '$sold', description='$description' where id=$id";
+        $sql = "UPDATE products SET name='$name',image='$file_name', quantify='$quantify', price='$price', sold = '$sold', description='$description' where id=$id";
         $conn->exec($sql);
         $mess = 'Update success';
-        header("location: ./showProduct.php?mess=$mess");
+        // header("location: ./showProduct.php?mess=$mess");
     } catch (PDOException $e) {
         echo "Lỗi: " . $e->getMessage();
     }
@@ -76,7 +79,7 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
 
 
-    <form style="width: 500px; margin: 24px auto;" class="form" action="update.php?id=<?= $_GET['id'] ?>" method="post">
+    <form style="width: 500px; margin: 24px auto;" class="form" action="update.php?id=<?= $_GET['id'] ?>" method="post" enctype="multipart/form-data">
         <div>
             <h1 style="text-align: center;">UPDATE PRODUCT</h1>
             <input type="hidden" name="id" value="<?= $product['id'] ?>">
@@ -92,7 +95,7 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Image: </label>
-            <img width="100px" height="100px" src="../assets/images/<?=$product['image']?>" />
+            <img width="100px" height="100px" src="../assets/images/<?=$product['image']?>" name ="image_" />
             <input class="form-control" type='file' name="image" value="<?= $file_name ?>" />
         </div>
         <div>

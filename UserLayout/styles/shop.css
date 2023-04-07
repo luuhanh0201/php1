@@ -1,44 +1,90 @@
-.wrapper__shop{
-    width: 100%;
-    display: flex;justify-content: center;
-    background-color: #F7F7F7;
-    padding-top: 12px;
+html {
+  /* font-family: sans-serif; */
+}
+.wrapper__shop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding-top: 12px;
 }
 
-.inner__shop{
-    width: 1240px;
-    display: flex;
-    justify-content: space-between;
+.inner__shop {
+  width: 1240px;
+  display: flex;
+  justify-content: space-between;
 }
-.nav-bar__shop{
-width: 200px;
-max-width: 100%;
+.nav-bar__shop {
+  width: 200px;
+  max-width: 100%;
 }
-.list__nav-bar{
-    font-size: 14px;
+.list__nav-bar {
+  font-size: 14px;
+  list-style: none;
 }
-.title__nav-bar{
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 18px;
+.title__nav-bar {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 18px;
 }
-.item__nav-bar{
-    margin-left: 12px;
-    padding-bottom: 6px;
-
+.item__nav-bar {
+  margin-left: 12px;
+  padding-bottom: 6px;
 }
-.list__products{
-
+.list__products {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
 }
-.product__item{
-    width: 240px;
-    height: 350px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
+.product__item {
+  width: 230px;
+  height: 350px;
+  box-shadow: 2px 3px 4px 0px #ccc;
+  border-radius: 5px;
+  position: relative;
+  margin-left: 16px;
+  margin-bottom: 24px;
 }
-.product__image{
-    padding: 100px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+.product__item:hover {
+  border: 1px solid #ccc;
+  transition: 0.2s linear;
+  transform: scale(1.02);
+}
+.product__image {
+  padding: 100px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.product__name {
+  margin: 8px 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 95%;
+  text-overflow: ellipsis;
+}
+.product__sale {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 8px 12px 8px;
+  font-size: 1.4rem;
+}
+.button__product {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+  bottom: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.button__product:hover {
+  transition: 0.2s linear;
+  background-color: var(--secondary-color);
 }
