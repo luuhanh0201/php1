@@ -3,6 +3,7 @@ include '../../connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     // $image = $_POST['image'];
+    $category = $_POST['category'];
     $quantify = $_POST['quantify'];
     $sold = $_POST['sold'];
     $price = $_POST['price'];
@@ -30,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $msg = "Vui lòng chọn ảnh";
     }
 
-    $sql = "INSERT INTO products (name,image,quantify,sold,price,description) values('$name','$file_name','$quantify','$sold','$price','$description')";
+    $sql = "INSERT INTO products (name,image,quantify,sold,price,description) values('$name','$file_name','$category''$quantify','$sold','$price','$description')";
 
     $conn->exec($sql);
     echo "Thêm dữ liệu thành công <br/>";
@@ -76,6 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div>
             <label class="col-sm-2 col-form-label">Quantify: </label>
             <input class="form-control" type='text' name="quantify" />
+        </div>
+        <div>
+            <label class="col-sm-2 col-form-label">Quantify: </label>
+            <input class="form-control" type='text' name="category" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Sold: </label>

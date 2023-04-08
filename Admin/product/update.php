@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $id = $_POST['id'];
     $image = $_POST['image_'];
     $name = $_POST['name'];
+    $category = $_POST['category'];
     $quantify = $_POST['quantify'];
     $price = $_POST['price'];
     $sold = $_POST['sold'];
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }else{
         $file_name = $image;
     }
-    
+    var_dump($file['tmp_name']);
 
     try {
         $sql = "UPDATE products SET name='$name',image='$file_name', quantify='$quantify', price='$price', sold = '$sold', description='$description' where id=$id";
@@ -43,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "Lỗi: " . $e->getMessage();
     }
 }
-
 $id = $_GET['id'];
 // Edit 
 $sql = "SELECT * FROM products where id=$id";
@@ -51,7 +51,8 @@ $stmt = $conn->prepare($sql);
 // Thực thi
 $stmt->execute();
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
-// var_dump($product);
+
+
 
 ?>
 
@@ -101,6 +102,10 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
         <div>
             <label class="col-sm-2 col-form-label">Quantify: </label>
             <input class="form-control" type='text' name="quantify" value="<?= $product['quantify'] ?>" />
+        </div>
+        <div>
+            <label class="col-sm-2 col-form-label">Category: </label>
+            <input class="form-control" type='text' name="category" value="<?= $product['category'] ?>" />
         </div>
         <div>
             <label class="col-sm-2 col-form-label">Price: </label>

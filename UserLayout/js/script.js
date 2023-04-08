@@ -8,7 +8,7 @@ console.log(lineActive)
 line.style.width = lineActive.offsetWidth + 'px'
 line.style.left = lineActive.offsetLeft + 'px'
 
-items.forEach((item,index) => {
+items.forEach((item, index) => {
     const content = contents[index]
 
     item.onclick = function () {
@@ -22,5 +22,9 @@ items.forEach((item,index) => {
         content.classList.add('active')
     }
 })
+
+function openSocial(link) {
+    return window.open(link)
+}
 
 

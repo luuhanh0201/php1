@@ -43,6 +43,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>ID</th>
             <th>NAME</th>
             <th>IMAGE</th>
+            <th>CATEGORY</th>
             <th>QUANTIFY</th>
             <th>PRICE</th>
             <th>SOLD</th>
@@ -57,6 +58,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td style="text-align: center;">
                     <img width="100px" height="100px" src="../assets/images/<?= $product['image'] ?>" />
                 </td>
+                <td style="text-align: center;"><?= $product['category'] ?></td>
                 <td style="text-align: center;"><?= $product['quantify'] ?></td>
                 <td style="text-align: center;"><?= $product['sold'] ?></td>
                 <td style="text-align: center;"><?= $product['price'] ?></td>
